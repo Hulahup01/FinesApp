@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinesApp.UI.App.Utilities.ViewModelBase">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FinesApp.UI.App.ViewModel.DriverProfileVM">
+    <Position X="2.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAwAAAACAAAAAEAAAAAQAAAA=</HashCode>
+      <FileName>ViewModel\DriverProfileVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinesApp.UI.App.ViewModel.DriverSearchVM">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIAAAAAAIBAgAAAAAAAQgAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\DriverSearchVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinesApp.UI.App.ViewModel.HomeVM">
+    <Position X="0.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\HomeVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinesApp.UI.App.ViewModel.MiolationsVM">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAABAAgAA=</HashCode>
+      <FileName>ViewModel\MiolationsVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FinesApp.UI.App.ViewModel.NavigationVM">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACAAACIBAAEABgAAAAQAAAAIgAAAAAQEAAA=</HashCode>
+      <FileName>ViewModel\NavigationVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

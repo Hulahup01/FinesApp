@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:FinesApp.UI.App.ViewModel"
+                    xmlns:view="clr-namespace:FinesApp.UI.App.View">
+
+    <DataTemplate DataType="{x:Type vm:HomeVM}">
+        <view:Home />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:DriverSearchVM}">
+        <view:DriversSearch />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:DriverProfileVM}">
+        <view:DriverProfile />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:MiolationsVM}">
+        <view:Miolations />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SettingsVM}">
+        <view:Settings />
+    </DataTemplate>
+    
+    
+</ResourceDictionary>

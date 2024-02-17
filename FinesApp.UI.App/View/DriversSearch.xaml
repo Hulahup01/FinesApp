@@ -1,0 +1,242 @@
+﻿<UserControl x:Class="FinesApp.UI.App.View.DriversSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:FinesApp.UI.App.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="790"
+             d:DesignWidth="730"
+             Loaded="Page_Loaded"
+             Style="{StaticResource Page_Style}">
+
+
+    <UserControl.Resources>
+
+        <CollectionViewSource x:Key="MyCollectionViewSource" Source="{Binding DriversList}" Filter="MyDataFilter" />
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonSyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <Style x:Key="searchTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="#ffffff" />
+            <Setter Property="Foreground" Value="#B0B9C6" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="15 10" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 10" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" BorderThickness="1" BorderBrush="#E0E6ED" >
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <vm:DriverSearchVM />
+    </UserControl.DataContext>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Style="{DynamicResource RoundedButtonSyle}" Content="Refresh"
+                HorizontalAlignment="Right"
+                Height="30"
+                Width="60"          
+                Background="#272B2F"
+                FontSize="15"
+                FontWeight="Bold"
+                Foreground="#BCBEE0"
+                Command="{Binding RefreshCommand}" Margin="0,0,5,0">
+        </Button>
+
+
+        <Button Style="{DynamicResource RoundedButtonSyle}" Content="Search by Serial Number"
+                HorizontalAlignment="Center"
+                Height="30"
+                Width="180"          
+                Background="#272B2F"
+                FontSize="15"
+                FontWeight="Bold"
+                Foreground="#BCBEE0"
+                Margin="0,0,120,0"
+                Click="OnSearch">
+        </Button>
+
+
+        <Grid Width="300" HorizontalAlignment="Left">
+
+            <TextBox x:Name="textBoxSearch"
+                     Text=""
+                     Height="30"
+                     Width="200"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     BorderThickness="0"
+                     FontSize="12"
+                     FontFamily="/Fonts/#Rubik"
+                     FontWeight="Bold"
+                     Margin="20,0,0,0"
+                     MaxLength="10"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     TextChanged="textBoxSearch_TextChanged"
+                     Background="#BCBEE0"
+                     Foreground="#272B2F">
+
+                <TextBox.Template>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border BorderThickness="5"
+                                Background="#BCBEE0"
+                                BorderBrush="#212529"
+                                CornerRadius="20">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                              Focusable="false"
+                              HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+
+
+            </TextBox>
+
+        </Grid>
+
+        <DataGrid x:Name="DriverData"
+                  Grid.Row="1"
+                  ColumnWidth="*"
+                  CanUserResizeRows="false"
+                  CanUserResizeColumns="false"
+                  CanUserReorderColumns="false"
+                  ItemsSource="{Binding Source={StaticResource MyCollectionViewSource}}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Background="#212529"
+                  SelectionChanged="Row_Click"
+                  BorderThickness="0"
+                  HeadersVisibility="Column">
+
+            <DataGrid.Resources>
+               
+            </DataGrid.Resources>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <!--<EventSetter Event="MouseLeftButtonDown" Handler="Row_Click"/>-->
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#272B2F"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Green"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FontFamily" Value="Fonts/#Rubik"/>
+                    <Setter Property="Foreground" Value="#BCBEE0"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Green"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    
+                </Style>
+            </DataGrid.CellStyle>
+            
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#BCBEE0"/>
+                    <Setter Property="Padding" Value="10,0,0,10"/>
+                    <Setter Property="FontFamily" Value="Montserrat"/>
+                    <Setter Property="FontSize" Value="15"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Serial Number" Binding="{Binding License.SerialNumber}" />
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Patronymic" Binding="{Binding Patronymic}" />
+                <DataGridTextColumn Header="Date of birthday" Binding="{Binding DateOfBirth}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

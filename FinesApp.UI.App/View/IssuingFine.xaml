@@ -1,0 +1,324 @@
+﻿<Window x:Class="FinesApp.UI.App.View.IssuingFine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:vm="clr-namespace:FinesApp.UI.App.ViewModel"
+        xmlns:local="clr-namespace:FinesApp.UI.App.View"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        Title="IssuingFine"
+        Height="450"
+        Width="800">
+
+    <Grid>
+
+        <Border Background="#212529"
+                CornerRadius="20"
+                BorderThickness="5"
+                BorderBrush="#DBDBDB">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                 <!--HEADER-->
+                <Grid Grid.Row="0">
+
+                    <TextBlock Text="Issuing Fine"
+                               Foreground="#DBDBDB"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="50"
+                               FontWeight="Bold"
+                               FontFamily="/Fonts/#Rubik" />
+                </Grid>
+
+                
+                
+                <Border Grid.Row="1"
+                    Background="#DBDBDB"/>
+
+                <Border Grid.Row="3"
+                    Background="#DBDBDB"/>
+
+                <!--Miolation-->
+                <Grid Grid.Row="2">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
+                               Text="Atricle"
+                               Margin="10,10,0,0"
+                               Foreground="#DBDBDB"
+                               FontWeight="Bold"
+                               FontSize="15"
+                               FontFamily="/Fonts/#Rubik"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"/>
+
+                    <TextBlock Grid.Column="0"
+                               Text="Part"
+                               Margin="10,0,0,10"
+                               Foreground="#DBDBDB"
+                               FontWeight="Bold"
+                               FontSize="15"
+                               FontFamily="/Fonts/#Rubik"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"/>
+
+                    <TextBox Grid.Column="0"
+                             x:Name="TextBoxArticle"
+                             TextAlignment="Center"
+                             FontSize="15"
+                             Width="100"
+                             Height="30"
+                             Foreground="#DBDBDB"
+                             IsReadOnly="True"
+                             Margin="0,5,5,0"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             BorderThickness="1"
+                             BorderBrush="#DBDBDB" />
+
+                    <TextBox Grid.Column="0"
+                             x:Name="TextBoxPart"
+                             Width="100"
+                             Height="30"
+                             Foreground="#DBDBDB"
+                             TextAlignment="Center"
+                             FontSize="15"
+                             IsReadOnly="True"
+                             Margin="0,0,5,5"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Bottom"
+                             BorderThickness="1"
+                             BorderBrush="#DBDBDB" />
+
+                    <TextBox Grid.Column="1"
+                             x:Name="TextBoxMiolDescription"
+                             Padding="10,0,10,0"
+                             BorderBrush="#DBDBDB"
+                             TextWrapping="Wrap"
+                             Foreground="#DBDBDB"
+                             IsReadOnly="True"
+                             BorderThickness="1"
+                             Margin="10,10,10,10"/>
+
+                    <Button Grid.Column="3"
+                            Width="60"
+                            Height="50"
+                            Background="#0bcdff"
+                            Click="Choose_Miolation">
+                        <materialDesign:PackIcon Kind="PlusBox" Width="30" Height="30" Foreground="#272B2F"/>
+
+                    </Button>
+
+                </Grid>
+
+                
+                <!--ACCEPT CANCEL-->
+                <Grid Grid.Row="5">
+                    <Button Content="Accept"
+                            Click="Accept_Click"
+                            Width="200"
+                            FontSize="18"
+                            Background="#0bcdff"
+                            Foreground="#272B2F"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="100,0,0,0">
+                        
+                    </Button>
+
+                    <Button IsCancel="True"
+                            Width="200"
+                            FontSize="18"                     
+                            Content="Cancel"
+                            HorizontalAlignment="Right"
+                            Background="#0bcdff"
+                            Foreground="#272B2F"
+                            VerticalAlignment="Center"
+                            Margin="0,0,100,0">
+
+                    </Button>
+
+                </Grid>
+
+                
+                <Grid Grid.Row="4">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="480" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                                                                   
+
+                        <Grid Grid.Row="0" Grid.RowSpan="2">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                       Text="Date of violation"
+                                       Margin="0,10,0,0"
+                                       Foreground="#DBDBDB"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       FontFamily="/Fonts/#Rubik"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"/>
+
+                            <Border Grid.Row="1" Grid.RowSpan="2"
+                                    BorderBrush="#DBDBDB"
+                                    BorderThickness="2"
+                                    Width="120">
+                                
+                            </Border>
+                            
+                            <materialDesign:TimePicker
+                                Grid.Row="1"
+                                x:Name="TimePickerDateOfViolation"
+                                Width="100"
+                                Is24Hours="True"
+                                Foreground="#DBDBDB"
+                                materialDesign:HintAssist.Hint="Time of violent"
+                                Style="{StaticResource MaterialDesignFloatingHintTimePicker}" />
+
+                            <DatePicker Grid.Row="2"
+                                        x:Name="DatePickerDateOfViolation"
+                                        Width="100"
+                                        Foreground="#DBDBDB"
+                                        materialDesign:HintAssist.Hint="Date of violent">
+                                
+                            </DatePicker>
+                                             
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Column="3">
+
+                        <TextBlock Grid.Column="0"
+                                       Text="Amount"
+                                       Margin="0,0,0,50"
+                                       Foreground="#DBDBDB"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       FontFamily="/Fonts/#Rubik"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+
+                        <TextBox Grid.Row="0"
+                                     HorizontalAlignment="Right"
+                                     Margin="0,0,5,0"
+                                     x:Name="TextBoxMonetary"
+                                     BorderThickness="1"
+                                     TextAlignment="Center"
+                                     BorderBrush="#DBDBDB"
+                                     Foreground="#DBDBDB"
+                                     MaxLength="7"
+                                     Width="100"
+                                     Height="30"
+                                     PreviewTextInput="DecimalTextBox_PreviewTextInput"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="1.5*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            
+                            <TextBlock Grid.Column="0"
+                                       Text="Issued by"
+                                       Margin="0,0,0,0"
+                                       Foreground="#DBDBDB"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       FontFamily="/Fonts/#Rubik"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"/>
+
+                            <TextBox Grid.Row="0"
+                                     x:Name="TextBoxIssuedBy"
+                                     FontSize="15"
+                                     Padding="10,0,10,0"
+                                     Margin="20,20,20,20"
+                                     TextWrapping="Wrap"
+                                     BorderThickness="1"
+                                     BorderBrush="#DBDBDB"
+                                     Foreground="#DBDBDB"/>
+
+
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+
+                            <TextBlock Grid.Column="0"
+                                       Text="Discription"
+                                       Margin="0,0,0,0"
+                                       Foreground="#DBDBDB"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       FontFamily="/Fonts/#Rubik"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"/>
+
+                            <TextBox Grid.Row="0"
+                                     Margin="20,20,20,0"
+                                     x:Name="TextBoxDiscription"
+                                     Padding="10,0,10,0"
+                                     FontSize="15"
+                                     TextWrapping="Wrap"
+                                     BorderThickness="1"
+                                     BorderBrush="#DBDBDB"
+                                     Foreground="#DBDBDB"/>
+
+
+                        </Grid>
+
+
+                    </Grid>
+                    
+                </Grid>
+                               
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+    
+</Window>

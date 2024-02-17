@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FinesApp.Domain.Entities.Driver">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <Members>
+      <Method Name="Driver" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FinesApp.Domain.Entities.Person">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="Person" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FinesApp.Domain.Entities.DriversLicense">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="DriversLicense" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FinesApp.Domain.Entities.Fine">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="Fine" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FinesApp.Domain.Entities.RegistrationCertificate">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="RegistrationCertificate" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FinesApp.Domain.Entities.TypeOfMiolation">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <Members>
+      <Method Name="TypeOfMiolation" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FinesApp.Infrastructure.Data.Repositories.DriverRepository">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <Members>
+      <Method Name="Add" Hidden="true" />
+      <Method Name="AddAsync" Hidden="true" />
+      <Method Name="Delete" Hidden="true" />
+      <Method Name="DeleteAsync" Hidden="true" />
+      <Method Name="DriverRepository" Hidden="true" />
+      <Method Name="GetById" Hidden="true" />
+      <Method Name="GetByIdAsync" Hidden="true" />
+      <Method Name="GetList" Hidden="true" />
+      <Method Name="GetListAsync" Hidden="true" />
+      <Method Name="InitializeAsync" Hidden="true" />
+      <Method Name="Save" Hidden="true" />
+      <Method Name="SaveAsync" Hidden="true" />
+      <Method Name="Update" Hidden="true" />
+      <Method Name="UpdateAsync" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FinesApp.Infrastructure.Data.Repositories.ViolationRepository">
+    <Position X="7" Y="7.5" Width="1.5" />
+    <Members>
+      <Method Name="Add" Hidden="true" />
+      <Method Name="AddAsync" Hidden="true" />
+      <Method Name="Delete" Hidden="true" />
+      <Method Name="DeleteAsync" Hidden="true" />
+      <Method Name="GetById" Hidden="true" />
+      <Method Name="GetByIdAsync" Hidden="true" />
+      <Method Name="GetList" Hidden="true" />
+      <Method Name="GetListAsync" Hidden="true" />
+      <Method Name="InitializeAsync" Hidden="true" />
+      <Method Name="Save" Hidden="true" />
+      <Method Name="SaveAsync" Hidden="true" />
+      <Method Name="Update" Hidden="true" />
+      <Method Name="UpdateAsync" Hidden="true" />
+      <Method Name="ViolationRepository" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FinesApp.Infrastructure.Data.Contexts.AppDbContext">
+    <Position X="7.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="FinesApp.Domain.Interfaces.Repositories.IRepository&lt;T&gt;">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
